@@ -12,6 +12,7 @@
 
 body {
   padding-bottom: 6rem;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -57,4 +58,10 @@ input[type=number] {
 
 .fade-leave-to {
   opacity: 0;
+}
+
+@media(max-width: 991px) {
+  .container {
+    max-width: 100% !important;
+  }
 }

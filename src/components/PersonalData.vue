@@ -29,24 +29,24 @@
         </b-row>
 
         <b-row class="personal-data__fields">
-            <b-col class="col-md-6 col-sm-12">
+            <b-col md="6" sm="12">
                 <label>
                     <input v-model="personalData.street" :disabled="disabled" type="text" placeholder="Street">
                 </label>
             </b-col>
-            <b-col class="col-md-6 col-sm-12">
+            <b-col md="6" sm="12">
                 <b-row>
-                    <b-col class="col-md-4">
+                    <b-col md="4" sm="12">
                         <label>
                             <input v-model="personalData.house" :disabled="disabled" type="text" placeholder="House">
                         </label>
                     </b-col>
-                    <b-col class="col-md-4">
+                    <b-col md="4" sm="12">
                         <label>
                             <input v-model="personalData.apartment" :disabled="disabled" type="text" placeholder="Apartment">
                         </label>
                     </b-col>
-                    <b-col class="col-md-4">
+                    <b-col md="4" sm="12">
                         <label>
                             <input v-model="personalData.postalCode" :disabled="disabled" type="text" placeholder="Postal Code">
                         </label>

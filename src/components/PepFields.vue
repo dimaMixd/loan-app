@@ -7,31 +7,31 @@
                     <span class="checkbox-custom">
                         <b-icon v-show="pep" class="icon" icon="check"></b-icon>
                     </span>
-                    <span>Neither I nor my family member is PEP</span>
+                    <span>Neither I nor my family member is PEP <b-icon class="modal-trigger" v-b-modal.modal-1 icon="info-circle"></b-icon></span>
                 </label>
             </div>
         </b-container>
         <Transition name="slide-up">
         <b-container v-if="!pep">
             <b-row class="personal-data__fields">
-                <b-col class="col-md-6 col-sm-12">
+                <b-col sm="12" md="6">
                     <label>
                         <b-form-select  v-model="relationship.selected" :options="relationship.options"></b-form-select>
                     </label>
                 </b-col>
-                <b-col class="col-md-6 col-sm-12">
+                <b-col sm="12" md="6">
                     <label>
                         <b-form-select  v-model="region.selected" :options="region.options"></b-form-select>
                     </label>
                 </b-col>
             </b-row>    
             <b-row class="personal-data__fields">
-                <b-col class="col-md-6 col-sm-12">
+                <b-col sm="12" md="6">
                     <label>
                         <b-form-select  v-model="position.selected" :options="position.options"></b-form-select>
                     </label>
                 </b-col>
-                <b-col class="col-md-6 col-sm-12">
+                <b-col sm="12" md="6">
                     <label>
                         <b-form-select  v-model="duration.selected" :options="duration.options"></b-form-select>
                     </label>
@@ -85,3 +85,14 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.modal-trigger {
+    margin-left: 1rem;
+    color: var(--secondary-purple);
+
+    @media(max-width: 991px) {
+        margin-left: 0;
+    }
+}
+</style>

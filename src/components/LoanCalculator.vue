@@ -4,7 +4,7 @@
             <div v-if="editMode" key="1">
                 <div class="loan-calc__fields">
                     <b-row>
-                        <b-col sm="12" md="4">
+                        <b-col sm="12" md="12" lg="4">
                             <div class="loan-calc__field loan-calc__field__amount">
                                 <label class="d-flex">
                                     <span class="input__label">
@@ -24,7 +24,7 @@
                                 </label>
                             </div>
                         </b-col>
-                        <b-col sm="12" md="4">
+                        <b-col sm="12" md="12" lg="4">
                             <div class="loan-calc__field loan-calc__field__duration d-flex">
                                 <label class="input__label">
                                     <span>Duration</span>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </b-col>
-                        <b-col sm="12" md="4">
+                        <b-col sm="12" md="12" lg="4">
                             <div class="loan-calc__total">
                                 <div class="total-container">
                                     <span class="total-container__monthly-label">Monthly Payment</span>
@@ -58,7 +58,7 @@
                         <b-icon icon="chevron-left"></b-icon>
                     </span>
                     <h3>Your loan application</h3>
-                    <h4>{{loanData.amount}}€ / {{loanData.duration}}months</h4>
+                    <h4>{{loanData.amount}}€ / {{loanData.duration}} months</h4>
                 </div>
             </div>
         </Transition>
@@ -186,20 +186,8 @@ export default {
             let latestAmount = this.loanData.amount;
             let list = [];
 
-            //Looping through selected amount and decreasing 100 from each value,
-            //and then creating an array and passing it as a prop
+            
             for( let i = 0; i < 101; i++) {
-
-                // if(latestAmount !== 0) {
-                //     let obj = {
-                //         id: Math.random(),
-                //         value: latestAmount - 100
-                //     }
-    
-                //     latestAmount = obj.value;
-    
-                //     list.push(obj);
-                // }
 
                 if( i*100 >= 200 ) {
                     let obj = {

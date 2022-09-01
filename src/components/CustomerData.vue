@@ -8,7 +8,7 @@
                     <div v-if="errors.length" class="errors">
                         <ul>
                             <li v-for="error in errors">
-                                {{error}}
+                                {{errorMessages[error]}}
                             </li>
                         </ul>
                     </div>
@@ -70,20 +70,20 @@
             </div>
             <div class="customer-data__edited__info">
                 <div class="wrapper">
-                    <b-row>
-                        <b-col>
+                    <b-row class="justify-content-center">
+                        <b-col md="auto" sm="12">
                             <div class="info__cell">
                                 <b-icon icon="person"></b-icon>
                                 <span class="info__cell__data">3949494949</span>
                             </div>
                         </b-col>
-                        <b-col>
+                        <b-col md="auto" sm="12">
                             <div class="info__cell">
                                 <b-icon icon="telephone"></b-icon>
                                 <span class="info__cell__data">{{customerData.phoneNumber}}</span>
                             </div>
                         </b-col>
-                        <b-col>
+                        <b-col md="auto" sm="12">
                             <div class="info__cell">
                                 <b-icon icon="envelope"></b-icon>
                                 <span class="info__cell__data">{{customerData.email}}</span>
@@ -122,6 +122,12 @@ export default {
                 personalCode: '',
                 phoneNumber: '',
                 email: ''
+            },
+            errorMessages: {
+                'email-error': 'Incorrect email',
+                'phone-error': 'Incorrect phone number',
+                'id-error': 'Incorrect ID number',
+                'name-error': 'Name cant be blank'
             }
         }
     },
@@ -130,14 +136,9 @@ export default {
             this.errors = [];
             let { fullName,email,personalCode,phoneNumber } = this.customerData;
 
-            //Email validation
-            if( !emailValidation(email) ) {
-                this.errors.push('email-error');
-            }
-
-            //Phone validatoin
-            if( !phoneNumberValidation(phoneNumber) ) {
-                this.errors.push('phone-error');
+            //Name validation
+            if( !(fullName.length > 0) ) {
+                this.errors.push('name-error');
             }
 
             //ID validatoin
@@ -145,10 +146,17 @@ export default {
                 this.errors.push('id-error');
             }
 
-            //Name validation
-            if( !(fullName.length > 0) ) {
-                this.errors.push('name-error');
+            //Phone validatoin
+            if( !phoneNumberValidation(phoneNumber) ) {
+                this.errors.push('phone-error');
             }
+            
+            //Email validation
+            if( !emailValidation(email) ) {
+                this.errors.push('email-error');
+            }
+
+
 
             if( this.errors.length === 0 ) {
                 this.editing = !this.editing;

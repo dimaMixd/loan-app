@@ -5,7 +5,17 @@
         </template>
         <b-dropdown-item :id="'el-'+element.value"  :key="element.id" v-for="element in elements" @click="dropdownItemClick(element)">
             <div v-if="amountDropdown" >
-                {{element.value}}
+                <div v-if="element.id === 2" class="min-value">
+                    <span>{{element.value}}€</span>
+                    <span>Min. allowed</span>
+                </div>
+                <div v-else-if="element.id === 100" class="max-value">
+                    <span>{{element.value}}€</span>
+                    <span>Max. allowed</span>
+                </div>
+                <div v-else>
+                    {{element.value}}€
+                </div>
             </div>
             <div v-else>
                 {{element.value}}

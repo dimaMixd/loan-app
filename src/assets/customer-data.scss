@@ -16,10 +16,14 @@
             > .row {
                 flex-direction: column;
                 width: 100%;
-                padding: 2rem;
+                padding: 1rem;
+
+                .col {
+                    margin-bottom: .5rem;
+                }
 
                 input {
-                    height: 40px;
+                    height: 48px;
                     width: 100%;
                 }
             }
@@ -33,12 +37,16 @@
             font-size: 30px;
             text-align: center;
             margin: 1.2rem 0;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 2.5rem;
+            }
         }
 
         &__info {
             width: 100%;
             border-radius: 0 0 var(--border-radius) var(--border-radius);
-            background-color: var(--light-grey);
+            background-color: var(--white-secondary);
             margin-top: 0rem;
             padding: 1rem 0;
 
@@ -53,6 +61,12 @@
                         &__data {
                             margin-left: .5rem;
                         }
+                    }
+                }
+
+                @include media-breakpoint-down(lg) {
+                    [class^="col"] {
+                        margin-top: 1rem;
                     }
                 }
             }
