@@ -11,7 +11,7 @@
                 </label>
             </div>
         </b-container>
-
+        <Transition name="slide-up">
         <b-container v-if="!pep">
             <b-row class="personal-data__fields">
                 <b-col class="col-md-6 col-sm-12">
@@ -38,6 +38,7 @@
                 </b-col>
             </b-row>    
         </b-container>
+        </Transition>
     </div>
 
 </template>

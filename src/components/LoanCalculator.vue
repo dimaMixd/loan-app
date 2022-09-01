@@ -1,54 +1,67 @@
 <template>
     <div class="loan-calc">
-        <div class="loan-calc__fields">
-            <b-row>
-                <b-col sm="12" md="4">
-                    <div class="loan-calc__field loan-calc__field__amount">
-                        <label class="d-flex">
-                            <span class="input__label">
-                                <span>Amount</span>
-                                <small v-if="messages.outOfrange">200 - 10 000 €</small>
-                                <small v-if="errors.outOfrange" class="error">Out of range</small>
-                            </span>
-                            <span class="input__field" :class="{ hasError: errors.outOfrange }">
-                                <div class="euro-sign">
-                                    <span :style="{ 'transform' : `translateX(${euroOffset}px)` }">€</span>
-                                </div>
-                                <input @keyup="validateAmount" @blur="roundUpNumber" type="number" v-model="loanData.amount">
-                                <div class="dropdown">
-                                    <InputDropdown @scroll-to="dropDownOpen" :currentValue="loanData.amount" dropDownRef="amount-dropdown" :amountDropdown="true" @dropdown-item-click="setAmount" :elements="amountDropDownList" />
-                                </div>
-                            </span>
-                        </label>
-                    </div>
-                </b-col>
-                <b-col sm="12" md="4">
-                    <div class="loan-calc__field loan-calc__field__duration d-flex">
-                        <label class="input__label">
-                            <span>Duration</span>
-                            <!-- <input min="1" type="number" v-model="loanData.duration"> -->
-                        </label>
-                        <div class="duration-field" @click="openMonthDropdown">
-                            <span>{{loanData.duration}} months</span>
-                            <div class="dropdown">
-                                <InputDropdown @dropdown-item-click="setMonthValue"  :elements="monthsList" />
+        <Transition mode="out-in" name="slide-up">
+            <div v-if="editMode" key="1">
+                <div class="loan-calc__fields">
+                    <b-row>
+                        <b-col sm="12" md="4">
+                            <div class="loan-calc__field loan-calc__field__amount">
+                                <label class="d-flex">
+                                    <span class="input__label">
+                                        <span>Amount</span>
+                                        <small v-if="messages.outOfrange">200 - 10 000 €</small>
+                                        <small v-if="errors.outOfrange" class="error">Out of range</small>
+                                    </span>
+                                    <span class="input__field" :class="{ hasError: errors.outOfrange }">
+                                        <div class="euro-sign">
+                                            <span :style="{ 'transform' : `translateX(${euroOffset}px)` }">€</span>
+                                        </div>
+                                        <input @keyup="validateAmount" @blur="roundUpNumber" type="number" v-model="loanData.amount">
+                                        <div class="dropdown">
+                                            <InputDropdown @scroll-to="dropDownOpen" :currentValue="loanData.amount" dropDownRef="amount-dropdown" :amountDropdown="true" @dropdown-item-click="setAmount" :elements="amountDropDownList" />
+                                        </div>
+                                    </span>
+                                </label>
                             </div>
-                        </div>
+                        </b-col>
+                        <b-col sm="12" md="4">
+                            <div class="loan-calc__field loan-calc__field__duration d-flex">
+                                <label class="input__label">
+                                    <span>Duration</span>
+                                    <!-- <input min="1" type="number" v-model="loanData.duration"> -->
+                                </label>
+                                <div class="duration-field" @click="openMonthDropdown">
+                                    <span>{{loanData.duration}} months</span>
+                                    <div class="dropdown">
+                                        <InputDropdown @dropdown-item-click="setMonthValue"  :elements="monthsList" />
+                                    </div>
+                                </div>
+                            </div>
+                        </b-col>
+                        <b-col sm="12" md="4">
+                            <div class="loan-calc__total">
+                                <div class="total-container">
+                                    <span class="total-container__monthly-label">Monthly Payment</span>
+                                    <span class="total-container__monthly-sum">{{monthlyPayment}}€</span>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <div class="loan-calc__submit-button">
+                        <ButtonArrow @button-click="checkFields" />
                     </div>
-                </b-col>
-                <b-col sm="12" md="4">
-                    <div class="loan-calc__total">
-                        <div class="total-container">
-                            <span class="total-container__monthly-label">Monthly Payment</span>
-                            <span class="total-container__monthly-sum">{{monthlyPayment}}€</span>
-                        </div>
-                    </div>
-                </b-col>
-            </b-row>
-            <div class="loan-calc__submit-button">
-                <ButtonArrow @button-click="checkFields" />
+                </div>
             </div>
-        </div>
+            <div v-else key="2">
+                <div class="loan-calc__summary">
+                    <span class="back-button" @click="editMode = true">
+                        <b-icon icon="chevron-left"></b-icon>
+                    </span>
+                    <h3>Your loan application</h3>
+                    <h4>{{loanData.amount}}€ / {{loanData.duration}}months</h4>
+                </div>
+            </div>
+        </Transition>
     </div>
 </template>
 <script>
@@ -66,7 +79,7 @@ export default {
         return {
             editMode: true,
             loanData: {
-                amount: 0,
+                amount: 2500,
                 duration: 12
             },
             errors: {
@@ -115,6 +128,7 @@ export default {
                 this.errors.outOfrange = true;
             } else {
                 this.errors.outOfrange = false;
+                this.editMode = false;
             }
         },
         openMonthDropdown(e) {
