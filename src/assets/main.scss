@@ -65,3 +65,7 @@ input[type=number] {
     max-width: 100% !important;
   }
 }
+
+select {
+  -webkit-appearance:none;
+}
