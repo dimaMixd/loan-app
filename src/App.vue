@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-container>
+      <LoanCalculator />
+      <CustomerData />
+      <PersonalData />
+      <PepFields />
+      <Beneficiary />
+      <NonPep />
+      <ProceedForm />
+      <Modals />
+
+    </b-container>
   </div>
 </template>
 
+sr
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import './assets/main.scss'
+import LoanCalculator from './components/LoanCalculator.vue'
+import CustomerData from './components/CustomerData.vue'
+import PersonalData from './components/PersonalData.vue'
+import ProceedForm from './components/ProceedForm.vue'
+import PepFields from './components/PepFields.vue'
+import Beneficiary from './components/Beneficiary.vue'
+import NonPep from './components/NonPep.vue'
+import Modals from './components/Modals.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LoanCalculator,
+    CustomerData,
+    PersonalData,
+    ProceedForm,
+    Modals,
+    PepFields,
+    Beneficiary,
+    NonPep
+  },
+  data() {
+    return {
+      loanData: {},
+      contactData: {},
+      personalInfo: {}
+    }
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -1,0 +1,120 @@
+.customer-data {
+    margin-top: 1rem;
+    background-color: var(--secondary-white);
+    padding: .3rem;
+    border-radius: var(--border-radius);
+    position: relative;
+    min-height: 87px;
+
+    &__editing {
+        max-width: 1100px;
+        margin: var(--margin-center);
+        padding: 1rem 0;
+
+        @include media-breakpoint-down(lg) {
+            width: 100%;
+            > .row {
+                flex-direction: column;
+                width: 100%;
+                padding: 2rem;
+
+                input {
+                    height: 40px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__edited {
+        width: 100%;
+
+        &__name {
+            font-size: 30px;
+            text-align: center;
+            margin: 1.2rem 0;
+        }
+
+        &__info {
+            width: 100%;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            background-color: var(--light-grey);
+            margin-top: 0rem;
+            padding: 1rem 0;
+
+            .wrapper {
+                max-width: 1200px;
+                margin: var(--margin-center);
+
+                .info {
+                    &__cell {
+                        text-align: center;
+
+                        &__data {
+                            margin-left: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__filled {
+        height: 20px;
+        width: 100%;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    &__field {
+        .input {
+            &__icon {
+                margin-right: .5rem;
+            }
+
+            &__field {
+                position: relative;
+                display: flex;
+                align-items: center;
+
+                .mobile-placeholder {
+                    position: absolute;
+                }
+
+                input[type="tel"] {
+                    padding-left: 2.75rem;
+                }
+
+                input {
+                    background: none;
+                    border: none;
+                    border-bottom: 1px solid var(--primary-purple);
+                    outline: 0;
+                    color: var(--tundora);
+                    width: 100%;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__submit-button {
+        position: absolute;
+        right: 0;
+        top: 17px;
+        right: 17px;
+    }
+
+    .errors {
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                color: var(--error-color);
+            }
+        }
+    }
+}
