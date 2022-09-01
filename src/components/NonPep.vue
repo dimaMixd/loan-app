@@ -15,25 +15,37 @@
         <b-container v-if="!pep">
             <b-row class="personal-data__fields">
                 <b-col sm="12" md="6">
-                    <label>
+                    <label class="select-wrap">
                         <b-form-select  v-model="relationship.selected" :options="relationship.options"></b-form-select>
+                        <span class="icon">
+                            <b-icon icon="chevron-down"></b-icon>
+                        </span>
                     </label>
                 </b-col>
                 <b-col sm="12" md="6">
-                    <label>
+                    <label class="select-wrap">
                         <b-form-select  v-model="region.selected" :options="region.options"></b-form-select>
+                        <span class="icon">
+                            <b-icon icon="chevron-down"></b-icon>
+                        </span>
                     </label>
                 </b-col>
             </b-row>    
             <b-row class="personal-data__fields">
                 <b-col sm="12" md="6">
-                    <label>
+                    <label class="select-wrap">
                         <b-form-select  v-model="position.selected" :options="position.options"></b-form-select>
+                        <span class="icon">
+                            <b-icon icon="chevron-down"></b-icon>
+                        </span>
                     </label>
                 </b-col>
                 <b-col sm="12" md="6">
-                    <label>
+                    <label class="select-wrap">
                         <b-form-select  v-model="duration.selected" :options="duration.options"></b-form-select>
+                        <span class="icon">
+                            <b-icon icon="chevron-down"></b-icon>
+                        </span>
                     </label>
                 </b-col>
             </b-row>    

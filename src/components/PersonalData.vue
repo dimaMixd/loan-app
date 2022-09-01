@@ -9,8 +9,11 @@
                 </label>
             </b-col>
             <b-col md="6" sm="12">
-                <label>
+                <label class="select-wrap">
                     <b-form-select :disabled="disabled" v-model="personalData.county.selected" :options="personalData.county.options"></b-form-select>
+                    <span class="icon">
+                        <b-icon icon="chevron-down"></b-icon>
+                    </span>
                 </label>
             </b-col>
         </b-row>

@@ -33,8 +33,11 @@
                     </label>
                 </b-col>
                 <b-col sm="12" md="6">
-                    <label>
+                    <label class="select-wrap">
                         <b-form-select  v-model="residency.selected" :options="residency.options"></b-form-select>
+                        <span class="icon">
+                            <b-icon icon="chevron-down"></b-icon>
+                        </span>
                     </label>
                 </b-col>
             </b-row>
