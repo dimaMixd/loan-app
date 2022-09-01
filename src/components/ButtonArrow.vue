@@ -27,6 +27,9 @@ button {
     border: none;
     outline: 0;
     transition: all .25s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 
     &.white {

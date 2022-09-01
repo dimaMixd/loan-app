@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <b-container>
+      <Logo />
       <LoanCalculator />
       <CustomerData />
       <PersonalData />
@@ -18,6 +19,7 @@ sr
 
 <script>
 import './assets/main.scss'
+import Logo from './components/Logo.vue'
 import LoanCalculator from './components/LoanCalculator.vue'
 import CustomerData from './components/CustomerData.vue'
 import PersonalData from './components/PersonalData.vue'
@@ -30,6 +32,7 @@ import Modals from './components/Modals.vue'
 export default {
   name: 'App',
   components: {
+    Logo,
     LoanCalculator,
     CustomerData,
     PersonalData,

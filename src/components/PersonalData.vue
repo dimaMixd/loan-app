@@ -18,12 +18,12 @@
         <b-row class="personal-data__fields">
             <b-col md="6" sm="12">
                 <label>
-                    <input v-model="city" :disabled="disabled" type="text" placeholder="City / Parish">
+                    <input v-model="personalData.city" :disabled="disabled" type="text" placeholder="City / Parish">
                 </label>
             </b-col>
             <b-col md="6" sm="12">
                 <label>
-                    <input v-model="village" :disabled="disabled" type="text" placeholder="Village / Township">
+                    <input v-model="personalData.village" :disabled="disabled" type="text" placeholder="Village / Township">
                 </label>
             </b-col>
         </b-row>
@@ -31,24 +31,24 @@
         <b-row class="personal-data__fields">
             <b-col class="col-md-6 col-sm-12">
                 <label>
-                    <input v-model="street" :disabled="disabled" type="text" placeholder="Street">
+                    <input v-model="personalData.street" :disabled="disabled" type="text" placeholder="Street">
                 </label>
             </b-col>
             <b-col class="col-md-6 col-sm-12">
                 <b-row>
                     <b-col class="col-md-4">
                         <label>
-                            <input v-model="house" :disabled="disabled" type="text" placeholder="House">
+                            <input v-model="personalData.house" :disabled="disabled" type="text" placeholder="House">
                         </label>
                     </b-col>
                     <b-col class="col-md-4">
                         <label>
-                            <input v-model="apartment" :disabled="disabled" type="text" placeholder="Apartment">
+                            <input v-model="personalData.apartment" :disabled="disabled" type="text" placeholder="Apartment">
                         </label>
                     </b-col>
                     <b-col class="col-md-4">
                         <label>
-                            <input v-model="postalCode" :disabled="disabled" type="text" placeholder="Postal Code">
+                            <input v-model="personalData.postalCode" :disabled="disabled" type="text" placeholder="Postal Code">
                         </label>
                     </b-col>
                 </b-row>

@@ -11,8 +11,8 @@
                                 <small v-if="errors.outOfrange" class="error">Out of range</small>
                             </span>
                             <span class="input__field" :class="{ hasError: errors.outOfrange }">
-                                <div class="euro-sign d-none">
-                                    <span>€</span>
+                                <div class="euro-sign">
+                                    <span :style="{ 'transform' : `translateX(${euroOffset}px)` }">€</span>
                                 </div>
                                 <input @keyup="validateAmount" @blur="roundUpNumber" type="number" v-model="loanData.amount">
                                 <div class="dropdown">
@@ -66,7 +66,7 @@ export default {
         return {
             editMode: true,
             loanData: {
-                amount: 2700,
+                amount: 0,
                 duration: 12
             },
             errors: {
@@ -210,6 +210,11 @@ export default {
                 duration,
                 total
             }
+        },
+        euroOffset() {
+            let amountLenth = this.loanData.amount.toString().length;
+
+            return amountLenth * 4;
         }
     }
 }
